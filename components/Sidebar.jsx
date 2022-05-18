@@ -4,8 +4,21 @@ import { Avatar, Button, IconButton } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
+import * as EmailValidator from 'email-validator';
 
 function Sidebar() {
+
+    const createChat = () => {
+        const input = prompt('Please enter an email you would like to use for you chat'
+        );
+        // checking to make sure there is an input
+        if (!input) return null;
+
+        if (EmailValidator.validate(input)) {
+            // Need to add the chat into the DB
+        }
+    }
+
     return (
         <Container>
             <Header>
@@ -29,7 +42,7 @@ function Sidebar() {
                 <SearchInput placeholder="Search in chats" />
             </Search>
             {/* START NEW CHAT BUTTON */}
-            <SidebarButton>
+            <SidebarButton onClick={createChat}>
                 Start a new chat
             </SidebarButton>
 
